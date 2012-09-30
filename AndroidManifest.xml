@@ -8,6 +8,7 @@
         android:targetSdkVersion="15" />
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     
     <application
         android:icon="@drawable/ic_launcher"
@@ -24,7 +25,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="TimerService" />
+        <service android:name="TimerService" />
+        <activity 
+            android:name="AlarmDialog"
+            android:theme="@android:style/Theme.Dialog"
+            android:excludeFromRecents="true" />
+        <activity android:name="Preferences" />
     </application>
 
 </manifest>

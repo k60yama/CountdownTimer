@@ -156,6 +156,14 @@ public class CountdownTimerActivity extends Activity {
     		}
     	});
     	
+    	((Button)this.findViewById(R.id.buttonSettings)).setOnClickListener(
+    			new OnClickListener(){
+    				@Override
+    				public void onClick(View v){
+    					Intent intent = new Intent(CountdownTimerActivity.this, Preferences.class);
+    					startActivity(intent);
+    				}
+    			});
     }
     
     public static void showTime(int timeSeconds){
@@ -169,12 +177,14 @@ public class CountdownTimerActivity extends Activity {
     	showTime(counter);
     	timeLeft = counter;
     	
+    	//SeekBarの表示更新(60秒ごとに表示を更新する)
     	if(counter % 60 == 0){
     		sb.setProgress(counter/60);
     	}else{
     		sb.setProgress(counter/60+1);
     	}
     	
+    	//SeekBar、スタート、ストップの有効化・無効化
     	if(counter != 0){
     		btnStop.setEnabled(true);
     		btnStart.setEnabled(false);
@@ -185,12 +195,10 @@ public class CountdownTimerActivity extends Activity {
     		sb.setEnabled(true);
     	}
     }
-    
+     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.sample, menu);
         return true;
     }
-
-    
 }
